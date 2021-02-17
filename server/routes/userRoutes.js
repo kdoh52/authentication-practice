@@ -111,6 +111,26 @@ router.get("/logout", (req, res) => {
         expires: new Date(0)
     })
     .send();
+});
+
+router.get("/loggedIn", (req, res) => {
+    try {
+        // console.log(req.cookies);
+        const token = req.cookies.token;
+
+        if (!token) {
+            return res.json(false);
+        }
+
+        // check if token is valid, set var as object w/ user: 'userID'
+        // if token is invalid, it will send to catch statement and return false
+        jwt.verify(token, process.env.JWT_SECRET);
+        res.send(true);
+
+    } catch (err) {
+        console.log(err)
+        res.json(false);
+    }
 })
 
 module.exports = router

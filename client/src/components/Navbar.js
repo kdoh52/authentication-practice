@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from "react-router-dom"
 import AuthContext from '../contexts/AuthContext';
+import LogoutBtn from './LogoutBtn';
 
 export default function Navbar() {
 
@@ -16,7 +17,12 @@ export default function Navbar() {
                     <Link to="/login">Login</Link>
                 </>
             )}
-            {loggedIn === true && <Link to="/customer">Customer</Link>}
+            {loggedIn === true && (
+                <>
+                    <Link to="/customer">Customer</Link>
+                    <LogoutBtn />
+                </>
+            )}
 
         </div>
     )

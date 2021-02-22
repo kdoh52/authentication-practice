@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Customers from './components/Customers';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Register from './components/Register';
@@ -28,7 +29,7 @@ export default function Router() {
                 {loggedIn === true && (
                     <>
                         <Route path="/customer">
-                            <div>Customer</div>
+                            <Customers />
                         </Route>
                     </>
                 )}
